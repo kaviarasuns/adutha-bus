@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vite-plus/test";
-import { formatClock, momentInIst, parseGtfsTime, previousDay } from "../src/lib/service-time.ts";
+import {
+  formatClock,
+  formatDate,
+  momentInIst,
+  parseGtfsTime,
+  previousDay,
+} from "../src/lib/service-time.ts";
 
 describe("momentInIst", () => {
   it("gives Tamil Nadu's date, weekday and time for any instant", () => {
@@ -44,5 +50,11 @@ describe("formatClock", () => {
     expect(formatClock(31200)).toBe("8:40 AM");
     expect(formatClock(12 * 3600 + 5 * 60)).toBe("12:05 PM");
     expect(formatClock(90480)).toBe("1:08 AM");
+  });
+});
+
+describe("formatDate", () => {
+  it("puts the day before the month, as dates are written in India", () => {
+    expect(formatDate("20261117", "en")).toBe("17 Nov 2026");
   });
 });

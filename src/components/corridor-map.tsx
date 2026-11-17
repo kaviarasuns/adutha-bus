@@ -118,7 +118,8 @@ export function CorridorMap({
           [Math.min(...lons), Math.min(...lats)],
           [Math.max(...lons), Math.max(...lats)],
         ],
-        fitBoundsOptions: { padding: 48 },
+        // Room for the legend above and the info panel below.
+        fitBoundsOptions: { padding: { top: 120, bottom: 130, left: 32, right: 32 } },
         attributionControl: false,
         dragRotate: false,
         pitchWithRotate: false,
@@ -129,7 +130,8 @@ export function CorridorMap({
       created.addControl(new NavigationControl({ showCompass: false }), "top-right");
       created.addControl(new AttributionControl({ compact: true }));
 
-      created.on("load", () => {
+      // On the style, not on "load": routes and buses must not wait for basemap tiles on a slow connection.
+      created.once("style.load", () => {
         created.addSource("routes", { type: "geojson", data: collection(routeLines(timetable)) });
         created.addSource("stops", {
           type: "geojson",

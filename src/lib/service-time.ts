@@ -58,9 +58,9 @@ export function formatClock(seconds: number): string {
   return `${hour12}:${minute} ${hour24 < 12 ? "AM" : "PM"}`;
 }
 
-/** `17 Nov 2026` for a YYYYMMDD date. */
+/** `17 Nov 2026` for a YYYYMMDD date; `locale` is a language code such as `en` or `ta`. */
 export function formatDate(date: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
+  return new Intl.DateTimeFormat(`${locale}-IN`, {
     day: "numeric",
     month: "short",
     year: "numeric",
