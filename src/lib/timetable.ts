@@ -1,5 +1,8 @@
 import { previousDay, type Moment, type ServiceDay } from "./service-time.ts";
 
+/** `[longitude, latitude]`, the order GeoJSON uses. */
+export type LonLat = readonly [number, number];
+
 export interface LocalizedName {
   readonly en: string;
   readonly ta: string | null;
@@ -56,6 +59,16 @@ export interface Call {
   readonly depart: number;
   /** False when the time was estimated from measured running times. */
   readonly exact: boolean;
+  /** Metres along the trip's shape; null when the trip has no shape. */
+  readonly dist: number | null;
+}
+
+/** The road a trip follows. */
+export interface Shape {
+  readonly id: string;
+  readonly points: readonly LonLat[];
+  /** Metres from the start of the shape to each point. */
+  readonly dist: readonly number[];
 }
 
 export interface Trip {
@@ -63,6 +76,8 @@ export interface Trip {
   readonly routeId: string;
   readonly serviceId: string;
   readonly sourceId: string;
+  /** Null when no road shape was recorded; the trip is then drawn straight from stop to stop. */
+  readonly shapeId: string | null;
   readonly calls: readonly Call[];
 }
 
@@ -75,6 +90,7 @@ export interface Timetable {
   readonly routes: readonly Route[];
   readonly services: readonly Service[];
   readonly sources: readonly Source[];
+  readonly shapes: readonly Shape[];
   readonly trips: readonly Trip[];
 }
 
@@ -82,6 +98,7 @@ export interface TimetableIndex {
   readonly agencies: ReadonlyMap<string, Agency>;
   readonly routes: ReadonlyMap<string, Route>;
   readonly services: ReadonlyMap<string, Service>;
+  readonly shapes: ReadonlyMap<string, Shape>;
 }
 
 export function indexTimetable(timetable: Timetable): TimetableIndex {
@@ -89,6 +106,7 @@ export function indexTimetable(timetable: Timetable): TimetableIndex {
     agencies: new Map(timetable.agencies.map((agency) => [agency.id, agency])),
     routes: new Map(timetable.routes.map((route) => [route.id, route])),
     services: new Map(timetable.services.map((service) => [service.id, service])),
+    shapes: new Map(timetable.shapes.map((shape) => [shape.id, shape])),
   };
 }
 

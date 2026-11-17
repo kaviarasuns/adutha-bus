@@ -11,7 +11,7 @@ _Researched 2026-11-17 from web sources. Confidence is noted where a claim was n
 | RTI to the Coimbatore and Tiruppur RTOs | Private bus permits and timing sheets | After a reply; format unknown |
 | RTI to TNSTC Coimbatore | TNSTC schedules for the corridor | After a reply; format unknown |
 | tnstc.in and other booking sites | Some departures | No: scraping is ruled out |
-| OpenStreetMap | Roads; little bus data outside Chennai | Basemap only |
+| OpenStreetMap | Roads, 41 bus stations and 383 bus stops in the two districts; no corridor bus routes | Yes: stops and road shapes in the sample feed, and the fieldwork checklists |
 
 ## What exists today
 
@@ -22,8 +22,19 @@ _Researched 2026-11-17 from web sources. Confidence is noted where a claim was n
 - **Punctuality**: no schedule-adherence study was found for TNSTC or private buses. Studies of MTC show high travel-time variability ([arXiv](https://arxiv.org/pdf/1904.03444)), so scheduled positions will often be minutes off.
 - **Tracking mandate**: the state has mandated tracking devices on all public service vehicles ([DT Next](https://www.dtnext.in/amp/story/news/tamilnadu/tn-govt-mandates-tracking-devices-for-all-public-service-vehicles-845157)) and sanctioned devices for 13,490 state buses ([ThePrint](https://theprint.in/india/tn-sanctions-rs-17-99-cr-for-gps-tracking-devices-panic-buttons-in-state-run-buses/3094457/)). No award of that tender was found, and nothing says the data would be open.
 
+## Open data check for the corridor (2026-11-17)
+
+No open timetable exists for the Coimbatore–Tiruppur corridor.
+
+- **Mobility Database**: its catalogue lists 21 feeds for India. The only Tamil Nadu one is the community Chennai feed (`mdb-3360`). Nothing covers TNSTC Coimbatore or private buses.
+- **tn.data.gov.in**: one transport timetable dataset, [SETC Bus Routes, Services and Timings](https://tn.data.gov.in/catalog/setc-bus-routes-services-and-timings), published in 2018 and last updated in 2019. SETC runs long-distance express services, not this corridor, and the contents were not inspected. Nothing was found for TNSTC or for stage carriage permits.
+- **OpenCity**: district-wise vehicle counts and Chennai MTC performance figures only.
+- **OpenStreetMap** (Overpass query over the two districts): 17 bus route relations, all around Mettupalayam, and none between Coimbatore and Tiruppur. It does hold 41 bus stations and 383 bus stops in the area, 308 of them named and 148 with a Tamil name. The sample feed and the fieldwork checklists now use them; see "Licence and legal" for what that means for publishing.
+- **Unofficial blogs** such as tickettogetlost.com list TNSTC departures per bus stand, some several years old, and nothing for private buses on this corridor. They are not open data and are not copied. One 2021 page describes Coimbatore–Tiruppur buses via Avinashi and via Palladam roughly every 10 to 15 minutes from about 04:20 to 23:00, and mentions a third variant via Somanur and Mangalam, which the fieldwork should confirm.
+
 ## Collection plan for the corridor
 
+0. **Start from the checklists** in `fieldwork/`: one CSV per route variant listing the OpenStreetMap stops along the road, in order, with columns to mark whether buses stop there and to correct the names. OpenStreetMap is sparse on the highway stretches, so expect to add stops such as Neelambur and Karumathampatti.
 1. **Bus stands**: photograph the timing boards and ask the time-keepers at Gandhipuram and Singanallur in Coimbatore and at the Tiruppur bus stands. Record terminus departure times per operator and route variant.
 2. **Rides**: ride each route variant with a GPS logger at peak and off-peak hours. This gives stop positions, the road shape (`shapes.txt`) and running times between stops.
 3. **RTI requests**, filed in parallel, to the two RTOs and to TNSTC Coimbatore. Use the replies to verify and fill gaps.
@@ -45,10 +56,16 @@ Every trip names a source in `data/gtfs/sources.txt`:
 ## Licence and legal
 
 - The dataset will be published under CC BY 4.0 once it holds real data. Timings gathered first-hand and from RTI replies are facts collected by this project.
-- Route shapes must come from this project's own GPS logs. Shapes traced from OpenStreetMap would fall under the ODbL and could not be released as CC BY.
+- **Open decision.** The sample feed takes its stop positions, some stop names and all road shapes from OpenStreetMap, which is licensed under the ODbL (attribution and share-alike). A dataset that keeps them must be published under the ODbL, not CC BY 4.0. To publish under CC BY as decided, replace them with this project's own surveyed positions and GPS ride logs first. Each OpenStreetMap-derived stop is marked by its `osm_element` column in `stops.txt`, and every row of `shapes.txt` is OpenStreetMap-derived.
 - The basemap is OpenFreeMap, built on OpenStreetMap data, and is credited on the map. It is displayed, not redistributed.
 - India has no scraping statute, but Section 43 of the IT Act creates civil liability for unauthorised access, and commentary suggests it may reach scraping of public sites ([law.asia](https://law.asia/india-data-scraping-regulation/)). The Government Open Data Licence covers only data released on data.gov.in-type platforms, which these timetables are not. Scraping is therefore not used. (Secondary commentary, medium confidence.)
 
 ## The sample feed
 
-The feed currently in `data/gtfs` has `kind=sample` as its only source. Stop names are real. Stop positions were placed approximately, not surveyed. Departure times, running times and the two private operators are invented. Which Tiruppur bus stand the corridor buses use, and where the Palladam route starts, are guesses listed as open questions in `product-doc.md`.
+The feed currently in `data/gtfs` has `kind=sample` as its only source.
+
+- **Stops**: the bus stands are OpenStreetMap's. The stops between them are the named OpenStreetMap bus stops within 45 m of each route's road, with the two sides of a road merged into one. Their names are as mapped, lightly tidied, so some are informal or misspelt. Tamil names are included where OpenStreetMap has one.
+- **Road shapes**: driving routes between the bus stands, computed by the public OSRM server on OpenStreetMap roads and simplified. They are the router's choice of road, not a record of where buses run.
+- **Three variants**: via Avinashi, via Palladam, and via Somanur. The Somanur variant rests on one 2021 blog page and is unconfirmed.
+- **Invented**: every departure time, every running time and the two private operators. First and last departures loosely follow the 04:20 to 23:00 span that blog reports.
+- **Guesses** listed as open questions in `product-doc.md`: which Tiruppur bus stand the corridor buses use, and where the Palladam route starts.

@@ -23,6 +23,7 @@ The corridor is every bus between Coimbatore and Tiruppur, via Avinashi and via 
 Rules for v1:
 
 - Terminus departure times are recorded as facts and shown exactly. Times at intermediate stops are estimated from measured running times and shown as "around".
+- A bus on the map follows the road when the trip has a recorded road shape, and a straight line between stops when it has none.
 - Map positions are labelled "scheduled", drawn as a faded dot inside the stretch of road the bus is timetabled to cover, and explained in one line the first time the map opens. The words "live" and "tracking" are not used anywhere.
 - English is the default language, with a Tamil toggle. Every stop has an English and a Tamil name, and search matches either, plus common spelling variants.
 - The app works offline once loaded.
@@ -54,6 +55,8 @@ Conventions carried over from the team-republic repository: this doc with dated 
 2. Does the Palladam route start at Gandhipuram or at Singanallur?
 3. Where are problem reports reviewed: straight from Cloudflare KV, or forwarded somewhere easier to read?
 4. Which domain will the app use?
+5. Is there a third route variant via Somanur and Mangalam, and how often does it run?
+6. Publish under the ODbL and keep OpenStreetMap stops and road shapes, or replace them with surveyed data and publish under CC BY 4.0 as first decided?
 
 ## Decisions
 - 2026-11-17: The core product is the stop-to-stop timetable. The map is a secondary view on top of it.
@@ -75,3 +78,4 @@ Conventions carried over from the team-republic repository: this doc with dated 
 - 2026-11-17: Stack is React, Vite, TanStack Router, Tailwind 4 and MapLibre on Cloudflare Pages, with a Cloudflare Worker for reports.
 - 2026-11-17: Carry over team-republic's docs, provenance rule, tooling, CI, map fixes and bilingual pattern. Leave its API, database, auth and mobile app behind.
 - 2026-11-17: The name is Adutha Bus.
+- 2026-11-17: No open timetable exists for the corridor (see `data-sources.md`). Use what open data there is: OpenStreetMap bus stops and road shapes go into the sample feed and into fieldwork checklists. This leaves the publishing licence as open question 6.

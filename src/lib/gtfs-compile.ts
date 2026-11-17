@@ -5,6 +5,7 @@ import {
   type Call,
   type Route,
   type Service,
+  type Shape,
   type Source,
   type SourceKind,
   type Stop,
@@ -202,6 +203,32 @@ export function compileGtfs(files: GtfsFiles): CompileResult {
     }
   }
 
+  const shapePoints = new Map<string, Row[]>();
+  for (const row of rows("shapes.txt")) {
+    const shapeId = cell(row, "shape_id");
+    shapePoints.set(shapeId, [...(shapePoints.get(shapeId) ?? []), row]);
+  }
+  const shapes: Shape[] = [];
+  for (const [id, pointRows] of shapePoints) {
+    const ordered = pointRows.toSorted(
+      (a, b) => Number(cell(a, "shape_pt_sequence")) - Number(cell(b, "shape_pt_sequence")),
+    );
+    const dist = ordered.map((row) => Number(cell(row, "shape_dist_traveled") || "NaN"));
+    if (ordered.length < 2 || dist.some((d, i) => Number.isNaN(d) || d < (dist[i - 1] ?? 0))) {
+      problems.push(
+        `shapes.txt: shape ${id} needs two or more points with a rising shape_dist_traveled`,
+      );
+    }
+    shapes.push({
+      id,
+      points: ordered.map((row) => [
+        Number(cell(row, "shape_pt_lon")),
+        Number(cell(row, "shape_pt_lat")),
+      ]),
+      dist,
+    });
+  }
+
   const callRows = new Map<string, Row[]>();
   for (const row of rows("stop_times.txt")) {
     const tripId = cell(row, "trip_id");
@@ -237,6 +264,11 @@ export function compileGtfs(files: GtfsFiles): CompileResult {
       problems.push(`trips.txt: trip ${id} has no known source_id, so its times cannot be traced`);
     }
 
+    const shapeId = cell(row, "shape_id") || null;
+    if (shapeId !== null && !shapePoints.has(shapeId)) {
+      problems.push(`trips.txt: trip ${id} has unknown shape ${shapeId}`);
+    }
+
     const calls: Call[] = [];
     const ordered = (callRows.get(id) ?? []).toSorted(
       (a, b) => Number(cell(a, "stop_sequence")) - Number(cell(b, "stop_sequence")),
@@ -262,7 +294,14 @@ export function compileGtfs(files: GtfsFiles): CompileResult {
         );
       }
       clock = depart;
-      calls.push({ stop, arrive, depart, exact: cell(callRow, "timepoint") !== "0" });
+      const travelled = cell(callRow, "shape_dist_traveled");
+      const dist = shapeId === null || travelled === "" ? null : Number(travelled);
+      if (shapeId !== null && (dist === null || dist < (calls.at(-1)?.dist ?? 0))) {
+        problems.push(
+          `stop_times.txt: trip ${id} follows a shape, so stop ${cell(callRow, "stop_id")} needs a shape_dist_traveled that does not fall`,
+        );
+      }
+      calls.push({ stop, arrive, depart, exact: cell(callRow, "timepoint") !== "0", dist });
     }
     if (calls.length < 2) {
       problems.push(`stop_times.txt: trip ${id} needs at least two stops`);
@@ -272,7 +311,7 @@ export function compileGtfs(files: GtfsFiles): CompileResult {
     if (collected !== undefined && collected > (verifiedOn.get(routeId) ?? "")) {
       verifiedOn.set(routeId, collected);
     }
-    trips.push({ id, routeId, serviceId, sourceId, calls });
+    trips.push({ id, routeId, serviceId, sourceId, shapeId, calls });
   }
 
   const routes: Route[] = [];
@@ -311,6 +350,7 @@ export function compileGtfs(files: GtfsFiles): CompileResult {
       routes,
       services,
       sources,
+      shapes,
       trips,
     },
   };

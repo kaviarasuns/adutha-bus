@@ -1,0 +1,13 @@
+order,km_from_gandhipuram,name_in_osm,tamil_name_in_osm,lat,lon,osm_element,buses_stop_here_yes_no,correct_name,correct_tamil_name,notes
+1,0.0,Coimbatore Gandhipuram Central Bus Stand,கோயம்புத்தூர் காந்திபுரம் மத்திய பேருந்து நிலையம்,11.0141242,76.9669157,way/506390719,,,,
+2,2.1,Manis School,மணி மேனிலைப்பள்ளி பேருந்து நிறுத்தம்,11.0141675,76.9812123,node/1042222205,,,,
+3,2.7,Lakshmi Mills,,11.0134774,76.985554,node/1039707362,,,,
+4,3.3,Kidney centre,,11.009773,76.9898136,node/1474518456,,,,
+5,8.5,Singanallur Bus Stand,சிங்காநல்லூர் பேருந்து நிலையம்,11.0024206,77.0290914,way/902447096,,,,
+6,17.3,RVS College of Engineering and Technology,ஆர் எம் எஸ் பொறியியல் மற்றும் தொழில்நுட்பக் கல்லூரி பேருந்து நிறுத்தம்,11.0219281,77.1029363,node/354835103,,,,
+7,19.8,Sulur Bus Stand,சூலூர் பேருந்து நிலையம்,11.0259441,77.1252174,node/1161722780,,,,
+8,22.7,kangeyampalayam,,11.0275742,77.1510099,node/10216846615,,,,
+9,23.2,Sulur aero main gate,,11.0271985,77.1553569,node/10216903717,,,,
+10,38.2,Palladam Bus Stand,பல்லடம் பேருந்து நிலையம்,10.9944881,77.2830972,way/985014334,,,,
+11,51.0,Collector Office,,11.0816396,77.3433679,node/13037433240,,,,
+12,53.0,Tiruppur Old Bus Stand,திருப்பூர் பழைய பேருந்து நிலையம்,11.0981849,77.3482607,way/1363614386,,,,

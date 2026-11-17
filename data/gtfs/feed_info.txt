@@ -1,2 +1,2 @@
 feed_publisher_name,feed_publisher_url,feed_lang,feed_version
-Adutha Bus,https://github.com/kaviarasuns/adutha-bus,en,sample-2026-11-17
+Adutha Bus,https://github.com/kaviarasuns/adutha-bus,en,sample-2026-11-17b

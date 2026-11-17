@@ -1,2 +1,2 @@
 source_id,kind,collected_on,note
-SAMPLE,sample,20261117,"Invented departure times and approximate stop positions, for building the app. Not a real timetable."
+SAMPLE,sample,20261117,"Invented departure and running times, for building the app. Stops and road shapes are from OpenStreetMap (ODbL). Not a real timetable."

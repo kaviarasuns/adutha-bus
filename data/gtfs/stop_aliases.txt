@@ -1,6 +1,5 @@
 stop_id,alias
 CBE_GANDHIPURAM,Kovai
-CBE_GANDHIPURAM,Central Bus Stand
 TUP_OLD_BUS_STAND,Tirupur
 TUP_NEW_BUS_STAND,Tirupur
 AVINASHI,Avanashi

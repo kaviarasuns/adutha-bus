@@ -52,10 +52,23 @@ async function loadStyle(): Promise<StyleSpecification | string> {
   }
 }
 
-/** One line per distinct run of stops; a route and its return run share a line. */
+/**
+ * The roads the buses follow. Trips without a recorded shape get one straight
+ * line per distinct run of stops; a route and its return run share a line.
+ */
 function routeLines(timetable: Timetable): Feature[] {
   const lines = new Map<string, Feature>();
+  for (const shape of timetable.shapes) {
+    lines.set(`shape ${shape.id}`, {
+      type: "Feature",
+      properties: {},
+      geometry: { type: "LineString", coordinates: [...shape.points] },
+    });
+  }
   for (const trip of timetable.trips) {
+    if (trip.shapeId !== null) {
+      continue;
+    }
     const stops = trip.calls.map((call) => call.stop);
     const key = (stops[0] ?? 0) <= (stops.at(-1) ?? 0) ? stops.join() : stops.toReversed().join();
     if (lines.has(key)) {

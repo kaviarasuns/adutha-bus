@@ -10,16 +10,18 @@ const ids = (departures: readonly { trip: { id: string } }[]) => departures.map(
 describe("departuresBetween", () => {
   it("lists the buses still to leave, soonest first", () => {
     const found = departuresBetween(timetable, index, A, C, at(TUESDAY, "07:00"), 10);
-    expect(ids(found)).toEqual(["T1", "T3"]);
+    expect(ids(found)).toEqual(["T1", "T4", "T3"]);
     expect(found[0]).toMatchObject({ departSeconds: 8 * 3600, arriveSeconds: 8 * 3600 + 22 * 60 });
   });
 
   it("includes a bus leaving this very minute and drops one that has left", () => {
     expect(ids(departuresBetween(timetable, index, A, C, at(TUESDAY, "08:00"), 10))).toEqual([
       "T1",
+      "T4",
       "T3",
     ]);
     expect(ids(departuresBetween(timetable, index, A, C, at(TUESDAY, "08:01"), 10))).toEqual([
+      "T4",
       "T3",
     ]);
   });
@@ -51,6 +53,7 @@ describe("departuresFrom", () => {
     expect(ids(departuresFrom(timetable, index, C, at(TUESDAY, "00:00"), 10))).toEqual(["T2"]);
     expect(ids(departuresFrom(timetable, index, A, at(TUESDAY, "00:00"), 10))).toEqual([
       "T1",
+      "T4",
       "T3",
     ]);
   });

@@ -1,23 +1,17 @@
 table_name,field_name,language,translation,record_id
-stops,stop_name,ta,கோயம்புத்தூர் காந்திபுரம் பேருந்து நிலையம்,CBE_GANDHIPURAM
-stops,stop_name,ta,லட்சுமி மில்ஸ்,LAKSHMI_MILLS
-stops,stop_name,ta,பீளமேடு,PEELAMEDU
-stops,stop_name,ta,ஹோப் காலேஜ்,HOPE_COLLEGE
-stops,stop_name,ta,சித்ரா,SITRA
-stops,stop_name,ta,சின்னியம்பாளையம்,CHINNIYAMPALAYAM
-stops,stop_name,ta,நீலாம்பூர்,NEELAMBUR
-stops,stop_name,ta,கருமத்தம்பட்டி,KARUMATHAMPATTI
-stops,stop_name,ta,தெக்கலூர்,THEKKALUR
-stops,stop_name,ta,அவிநாசி,AVINASHI
-stops,stop_name,ta,திருமுருகன்பூண்டி,THIRUMURUGANPOONDI
-stops,stop_name,ta,அனுப்பர்பாளையம்,ANUPPARPALAYAM
+stops,stop_name,ta,கோயம்புத்தூர் காந்திபுரம் மத்திய பேருந்து நிலையம்,CBE_GANDHIPURAM
+stops,stop_name,ta,மணி மேனிலைப்பள்ளி பேருந்து நிறுத்தம்,OSM_1042222205
+stops,stop_name,ta,கிருஷ்ணம்மாள் கல்லுரி,OSM_6751962820
+stops,stop_name,ta,வரதராஜா மில்ஸ்,OSM_6751947479
+stops,stop_name,ta,கோவை மருத்துவக்கல்லூரி,OSM_5329467822
+stops,stop_name,ta,பிஎஸ்ஜி கலைக்கல்லூரி,OSM_5329467823
+stops,stop_name,ta,ஜி ஆர் தாமோதரன் கல்லூரி,OSM_5329467922
+stops,stop_name,ta,சூலூர் பிரிவு,OSM_10819294132
+stops,stop_name,ta,அவிநாசி புதிய பேருந்து நிலையம்,AVINASHI
 stops,stop_name,ta,திருப்பூர் புதிய பேருந்து நிலையம்,TUP_NEW_BUS_STAND
 stops,stop_name,ta,திருப்பூர் பழைய பேருந்து நிலையம்,TUP_OLD_BUS_STAND
-stops,stop_name,ta,ராமநாதபுரம்,RAMANATHAPURAM
-stops,stop_name,ta,சிங்காநல்லூர்,SINGANALLUR
-stops,stop_name,ta,ஒண்டிப்புதூர்,ONDIPUDUR
-stops,stop_name,ta,சூலூர்,SULUR
-stops,stop_name,ta,காரணம்பேட்டை,KARANAMPETTAI
-stops,stop_name,ta,பல்லடம்,PALLADAM
-stops,stop_name,ta,அருள்புரம்,ARULPURAM
-stops,stop_name,ta,வீரபாண்டி பிரிவு,VEERAPANDI_PIRIVU
+stops,stop_name,ta,சிங்காநல்லூர் பேருந்து நிலையம்,SINGANALLUR
+stops,stop_name,ta,ஆர் எம் எஸ் பொறியியல் மற்றும் தொழில்நுட்பக் கல்லூரி பேருந்து நிறுத்தம்,OSM_354835103
+stops,stop_name,ta,சூலூர் பேருந்து நிலையம்,SULUR
+stops,stop_name,ta,பல்லடம் பேருந்து நிலையம்,PALLADAM
+stops,stop_name,ta,சோமனூர் பேருந்து நிலையம்,SOMANUR

@@ -4,3 +4,5 @@ SAMPLE_A_AVN,SAMPLE_A,,Coimbatore – Tiruppur via Avinashi,3
 SAMPLE_B_AVN,SAMPLE_B,,Coimbatore – Tiruppur via Avinashi,3
 TNSTC_CBE_PLD,TNSTC_CBE,,Coimbatore – Tiruppur via Palladam,3
 SAMPLE_B_PLD,SAMPLE_B,,Coimbatore – Tiruppur via Palladam,3
+SAMPLE_A_SMN,SAMPLE_A,,Coimbatore – Tiruppur via Somanur,3
+TNSTC_CBE_SMN,TNSTC_CBE,,Coimbatore – Tiruppur via Somanur,3

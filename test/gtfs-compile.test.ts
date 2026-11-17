@@ -50,6 +50,35 @@ describe("compileGtfs", () => {
     expect(result.ok && result.timetable.sample).toBe(true);
   });
 
+  it("reads a road shape and each stop's distance along it", () => {
+    const timetable = fixtureTimetable();
+    expect(timetable.shapes).toEqual([
+      {
+        id: "BEND",
+        points: [
+          [77, 11],
+          [78, 12],
+          [79, 11],
+        ],
+        dist: [0, 1000, 2000],
+      },
+    ]);
+    const t4 = timetable.trips.find((trip) => trip.id === "T4");
+    expect(t4?.shapeId).toBe("BEND");
+    expect(t4?.calls.map((call) => call.dist)).toEqual([0, 2000]);
+    expect(timetable.trips.find((trip) => trip.id === "T1")?.calls[0]?.dist).toBeNull();
+  });
+
+  it("rejects a shaped trip whose stops lack a distance along the shape", () => {
+    expect(
+      problemsOf({
+        "stop_times.txt": fixtureFiles["stop_times.txt"]?.replace("C,2,1,2000", "C,2,1,") ?? "",
+      }),
+    ).toEqual([
+      "stop_times.txt: trip T4 follows a shape, so stop C needs a shape_dist_traveled that does not fall",
+    ]);
+  });
+
   it("names a missing file", () => {
     const { "stops.txt": _stops, ...rest } = fixtureFiles;
     expect(compileGtfs(rest)).toEqual({ ok: false, problems: ["stops.txt is missing"] });
@@ -59,7 +88,7 @@ describe("compileGtfs", () => {
     expect(
       problemsOf({
         "trips.txt":
-          "route_id,service_id,trip_id,source_id\nR,DAILY,T1,\nR,WEEKDAY,T2,RIDE\nR,DAILY,T3,BOARD\n",
+          "route_id,service_id,trip_id,source_id\nR,DAILY,T1,\nR,WEEKDAY,T2,RIDE\nR,DAILY,T3,BOARD\nR,DAILY,T4,RIDE\n",
       }),
     ).toEqual(["trips.txt: trip T1 has no known source_id, so its times cannot be traced"]);
   });
