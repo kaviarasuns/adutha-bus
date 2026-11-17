@@ -1,0 +1,23 @@
+table_name,field_name,language,translation,record_id
+stops,stop_name,ta,கோயம்புத்தூர் காந்திபுரம் பேருந்து நிலையம்,CBE_GANDHIPURAM
+stops,stop_name,ta,லட்சுமி மில்ஸ்,LAKSHMI_MILLS
+stops,stop_name,ta,பீளமேடு,PEELAMEDU
+stops,stop_name,ta,ஹோப் காலேஜ்,HOPE_COLLEGE
+stops,stop_name,ta,சித்ரா,SITRA
+stops,stop_name,ta,சின்னியம்பாளையம்,CHINNIYAMPALAYAM
+stops,stop_name,ta,நீலாம்பூர்,NEELAMBUR
+stops,stop_name,ta,கருமத்தம்பட்டி,KARUMATHAMPATTI
+stops,stop_name,ta,தெக்கலூர்,THEKKALUR
+stops,stop_name,ta,அவிநாசி,AVINASHI
+stops,stop_name,ta,திருமுருகன்பூண்டி,THIRUMURUGANPOONDI
+stops,stop_name,ta,அனுப்பர்பாளையம்,ANUPPARPALAYAM
+stops,stop_name,ta,திருப்பூர் புதிய பேருந்து நிலையம்,TUP_NEW_BUS_STAND
+stops,stop_name,ta,திருப்பூர் பழைய பேருந்து நிலையம்,TUP_OLD_BUS_STAND
+stops,stop_name,ta,ராமநாதபுரம்,RAMANATHAPURAM
+stops,stop_name,ta,சிங்காநல்லூர்,SINGANALLUR
+stops,stop_name,ta,ஒண்டிப்புதூர்,ONDIPUDUR
+stops,stop_name,ta,சூலூர்,SULUR
+stops,stop_name,ta,காரணம்பேட்டை,KARANAMPETTAI
+stops,stop_name,ta,பல்லடம்,PALLADAM
+stops,stop_name,ta,அருள்புரம்,ARULPURAM
+stops,stop_name,ta,வீரபாண்டி பிரிவு,VEERAPANDI_PIRIVU

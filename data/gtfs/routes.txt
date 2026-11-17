@@ -1,0 +1,6 @@
+route_id,agency_id,route_short_name,route_long_name,route_type
+TNSTC_CBE_AVN,TNSTC_CBE,,Coimbatore – Tiruppur via Avinashi,3
+SAMPLE_A_AVN,SAMPLE_A,,Coimbatore – Tiruppur via Avinashi,3
+SAMPLE_B_AVN,SAMPLE_B,,Coimbatore – Tiruppur via Avinashi,3
+TNSTC_CBE_PLD,TNSTC_CBE,,Coimbatore – Tiruppur via Palladam,3
+SAMPLE_B_PLD,SAMPLE_B,,Coimbatore – Tiruppur via Palladam,3

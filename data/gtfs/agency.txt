@@ -1,0 +1,4 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+TNSTC_CBE,TNSTC Coimbatore,https://github.com/kaviarasuns/adutha-bus,Asia/Kolkata,en
+SAMPLE_A,Sample Private Operator A,https://github.com/kaviarasuns/adutha-bus,Asia/Kolkata,en
+SAMPLE_B,Sample Private Operator B,https://github.com/kaviarasuns/adutha-bus,Asia/Kolkata,en

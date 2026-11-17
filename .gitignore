@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+coverage/
+
+# Compiled from data/gtfs by `pnpm data`
+src/generated/
+
+.wrangler/
+.DS_Store
+.env
+.env.local
+.env.*.local

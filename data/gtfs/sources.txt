@@ -1,0 +1,2 @@
+source_id,kind,collected_on,note
+SAMPLE,sample,20261117,"Invented departure times and approximate stop positions, for building the app. Not a real timetable."

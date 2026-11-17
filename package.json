@@ -1,0 +1,38 @@
+{
+  "name": "adutha-bus",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/build-timetable.ts",
+    "dev": "pnpm data && vp dev",
+    "build": "pnpm data && vp build",
+    "preview": "vp preview",
+    "typecheck": "pnpm data && tsc -p tsconfig.json",
+    "test": "vp test run",
+    "lint": "vp lint",
+    "fmt": "vp fmt"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "1.170.45",
+    "maplibre-gl": "6.16.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@tanstack/router-plugin": "1.168.47",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3",
+    "vite-plugin-pwa": "2.0.0",
+    "vite-plus": "1.3.0"
+  },
+  "engines": {
+    "node": "24.22.1"
+  },
+  "packageManager": "pnpm@10.34.7"
+}
